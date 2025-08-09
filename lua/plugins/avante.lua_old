@@ -9,9 +9,10 @@ return {
     -- Working Ollama configuration
     providers = {
       ollama = {
-        __inherited_from = "openai",
+        --        __inherited_from = "openai",
         endpoint = "http://127.0.0.1:11434",
-        model = "DeepSeek-coder-v2",
+        --model = "DeepSeek-coder-v2",
+        model = "phi4",
         max_tokens = 4096,
         -- important to set this to true if you are using a local server
         disable_tools = true,

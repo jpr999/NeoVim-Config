@@ -31,7 +31,7 @@ return {
       require("mason").setup()
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "lua_ls", "eslint", "tailwindcss", "ts_ls" }
+        ensure_installed = { "clangd", "lua_ls", "eslint", "tailwindcss", "tinymist", "ts_ls" }
       })
 
       for server, config in pairs(opts.servers) do

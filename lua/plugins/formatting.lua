@@ -12,10 +12,12 @@ return {
 					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 					json = { "prettierd", "prettier", stop_after_first = true },
 					graphql = { "prettierd", "prettier", stop_after_first = true },
+					typst = { "typstyle" },
 				},
 				format_on_save = {
+					lsp_fallback = true,
+					async = false,
 					timeout_ms = 500,
-					lsp_format = "fallback",
 				},
 			})
 		end,
