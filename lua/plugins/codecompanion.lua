@@ -11,9 +11,18 @@ return {
 		config = function(_, opts)
 			require("codecompanion").setup({
 				strategies = {
-					chat = { adapter = "ollama", model = "llama3.1" },
-					actions = { adapter = "ollama", model = "llama3.1" },
-					inline = { adapter = "ollama", model = "llama3.1" },
+					chat = {
+						adapter = "ollama",
+						model = "gpt-oss",
+					},
+					actions = {
+						adapter = "ollama",
+						model = "gpt-oss",
+					},
+					inline = {
+						adapter = "ollama",
+						model = "gpt-oss",
+					},
 				},
 			})
 
