@@ -14,6 +14,17 @@ return {
 					chat = {
 						adapter = "ollama",
 						model = "gpt-oss",
+						tools = {
+							["mcp"] = {
+								callback = function()
+									return require("mcphub.extensions.codecompanion")
+								end,
+								opts = {
+									requires_approval = true, -- Safety toggle
+									temperature = 0.7, --# Control creativity
+								},
+							},
+						},
 					},
 					actions = {
 						adapter = "ollama",
@@ -36,6 +47,12 @@ return {
 				noremap = true,
 				silent = true,
 				desc = "CodeCompanion Toggle",
+			})
+
+			vim.keymap.set({ "n", "v" }, "<leader>ci", "<cmd>CodeCompanion<cr>", {
+				noremap = true,
+				silent = true,
+				desc = "Inline CodeCompanion",
 			})
 
 			local progress = require("fidget.progress")
@@ -80,6 +97,25 @@ return {
 			diff.setup({
 				-- Disabled by default
 				source = diff.gen_source.none(),
+			})
+		end,
+	},
+
+	{
+		"ravitemer/mcphub.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+		},
+		-- uncomment the following line to load hub lazily
+		--cmd = "MCPHub",  -- lazy load
+		build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+		--uncomment this if you don't want mcp-hub to be available globally or can't use -g
+		--build = "bundled_build.lua", -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+		config = function()
+			require("mcphub").setup({
+				-- Required options
+				port = 3000, -- Port for MCP Hub server
+				config = vim.fn.expand("~/.config/lvim/lvim-mcp-servers.json"), -- Absolute path to config file
 			})
 		end,
 	},

@@ -6,6 +6,8 @@ vim.g.mapleader = " "
 -- Set leader key to space
 vim.g.maplocalleader = " "
 
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 --Clipboard
 vim.opt.clipboard:append("unnamedplus")
 vim.o.hlsearch = true
