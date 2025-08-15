@@ -4,11 +4,22 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("oil").setup({
-      default_file_explorer = true,       -- start up nvim with oil instead of netrw
-      columns = {},
+      default_file_explorer = true, -- start up nvim with oil instead of netrw
+
+      columns = {
+        "icon",
+        -- "permissions",
+        -- "size",
+        -- "mtime",
+      },
+
+      win_options = {
+        signcolumn = "yes:2",
+      },
+
       keymaps = {
         ["<C-h>"] = false,
-        ["<C-c>"] = false,         -- prevent from closing Oil as <C-c> is esc key
+        ["<C-c>"] = false, -- prevent from closing Oil as <C-c> is esc key
         ["<M-h>"] = "actions.select_split",
         ["q"] = "actions.close",
       },
@@ -25,7 +36,7 @@ return {
     vim.keymap.set("n", "<leader>-", require("oil").toggle_float)
 
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = "oil",   -- Adjust if Oil uses a specific file type identifier
+      pattern = "oil", -- Adjust if Oil uses a specific file type identifier
       callback = function()
         vim.opt_local.cursorline = true
       end,
