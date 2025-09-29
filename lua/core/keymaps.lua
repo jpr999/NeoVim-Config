@@ -7,6 +7,15 @@ vim.keymap.set("n", "<leader>", "<nop>")
 -- Redo remap
 vim.keymap.set("n", "U", "<C-r>")
 
+vim.keymap.set("n", "<leader>sf", ":lua Snacks.dashboard.pick('files')<cr>", { desc = "Find files", silent = true })
+
+vim.keymap.set(
+	"n",
+	"<leader>sg",
+	":lua Snacks.dashboard.pick('live_grep')<cr>",
+	{ desc = "Find string", silent = true }
+)
+
 -- Swap between split buffers
 vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
 vim.keymap.set("n", "<C-Right>", ":wincmd l<CR>")
@@ -55,33 +64,33 @@ vim.keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv")
 
 vim.api.nvim_create_autocmd(
-  "LspAttach",
-  { --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(ev)
-      vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
+	"LspAttach",
+	{ --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
+		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+		callback = function(ev)
+			vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
 
-      -- Buffer local mappings.
-      -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local opts = { buffer = ev.buf }
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-      vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+			-- Buffer local mappings.
+			-- See `:help vim.lsp.*` for documentation on any of the below functions
+			local opts = { buffer = ev.buf }
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-      vim.keymap.set("n", "<leader>f", function()
-        vim.lsp.buf.format({ async = true })
-      end, opts)
+			vim.keymap.set("n", "<leader>f", function()
+				vim.lsp.buf.format({ async = true })
+			end, opts)
 
-      -- Open the diagnostic under the cursor in a float window
-      vim.keymap.set("n", "<leader>d", function()
-        vim.diagnostic.open_float({
-          border = "rounded",
-        })
-      end, opts)
-    end,
-  }
+			-- Open the diagnostic under the cursor in a float window
+			vim.keymap.set("n", "<leader>d", function()
+				vim.diagnostic.open_float({
+					border = "rounded",
+				})
+			end, opts)
+		end,
+	}
 )

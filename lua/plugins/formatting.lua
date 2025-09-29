@@ -13,6 +13,8 @@ return {
 					json = { "prettierd", "prettier", stop_after_first = true },
 					graphql = { "prettierd", "prettier", stop_after_first = true },
 					typst = { "typstyle" },
+					c = { "clang-format" },
+					cpp = { "clang-format" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
