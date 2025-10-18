@@ -2,6 +2,7 @@ return {
 	"mason-org/mason-lspconfig.nvim",
 	opts = {
 		ensure_installed = { "lua_ls", "eslint", "postgres_lsp", "tailwindcss", "ts_ls" },
+		automatic_enable = true,
 	},
 
 	dependencies = {
@@ -29,5 +30,12 @@ return {
 			},
 		},
 		{ "hrsh7th/nvim-cmp", dependencies = { "L3MON4D3/LuaSnip" } },
+		{
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			opts = {
+				ensure_installed = { "prettier", "prettierd", "shellcheck" },
+				auto_update = true,
+			},
+		},
 	},
 }
