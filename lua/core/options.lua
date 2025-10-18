@@ -69,6 +69,9 @@ vim.o.scrolloff = 8
 vim.o.splitbelow = true
 vim.o.splitright = true
 
+-- Disable swapfiles
+vim.o.swapfile = false
+
 -- Highlight yank
 vim.api.nvim_create_autocmd("textyankpost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
