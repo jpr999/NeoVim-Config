@@ -13,7 +13,7 @@ return {
 				strategies = {
 					chat = {
 						adapter = "ollama",
-						model = "gpt-oss:120b",
+						model = "gpt-oss:32b",
 						tools = {
 							["mcp"] = {
 								callback = function()
@@ -28,12 +28,12 @@ return {
 					},
 					actions = {
 						adapter = "ollama",
-						model = "gpt-oss:120b",
+						model = "deepseek-r1:32",
 						--model = "qwen3:14b",
 					},
 					inline = {
 						adapter = "ollama",
-						model = "gpt-oss:120b",
+						model = "deepseek-r1:32b",
 						--model = "qwen3:14b",
 					},
 				},

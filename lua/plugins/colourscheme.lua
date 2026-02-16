@@ -19,6 +19,7 @@ return {
 			options = {
 				-- ... other configuration
 				theme = "auto", -- Can also be "auto" to detect automatically.
+				transparent = true,
 			},
 		})
 	end,
