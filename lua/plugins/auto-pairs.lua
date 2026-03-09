@@ -5,15 +5,15 @@ return {
     "hrsh7th/nvim-cmp",
   },
   config = function()
-    local autopairs = require("nvim-autopairs")     -- import nvim-autopairs
+    local autopairs = require("nvim-autopairs") -- import nvim-autopairs
 
     -- setup autopairs
     autopairs.setup({
-      check_ts = true,                              -- treesitter enabled
+      check_ts = true,                      -- treesitter enabled
       ts_config = {
-        lua = { "string" },                         -- dont add pairs in lua string treesitter nodes
-        javascript = { "template_string" },         -- dont add pairs in javscript template_string treesitter nodes
-        java = false,                               -- dont check treesitter on java
+        lua = { "string" },                 -- dont add pairs in lua string treesitter nodes
+        javascript = { "template_string" }, -- dont add pairs in javscript template_string treesitter nodes
+        java = false,                       -- dont check treesitter on java
       },
     })
     -- import nvim-autopairs completion functionality

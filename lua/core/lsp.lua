@@ -18,6 +18,15 @@ vim.diagnostic.config({
 		border = "rounded",
 		source = true,
 	},
+
+	diagnostics = {
+		-- Get the language server to recognize the `vim` global
+		globals = {
+			"vim",
+			"require",
+		},
+	},
+
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "󰅚 ",
